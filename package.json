@@ -1,11 +1,11 @@
 {
-    "name": "Selvania-Launcher",
-    "preductname": "Selvania Launcher",
-    "version": "1.3.0",
-    "description": "Launcher Mincraft custom (crack, premium)",
+    "name": "launcher",
+    "preductname": "Almyria Launcher",
+    "version": "1.0.0",
+    "description": "Launcher pour le serveur Almyria",
     "main": "src/app.js",
-    "author": "Luuxis",
-    "url": "http://craftdium.ml/launcherSelvania",
+    "author": "Luuxis, LeWarpy <coucou@lewarpy.fr",
+    "url": "http://almyria-launcher-files.sc1char8820.universe.wf",
     "engines": {
         "node": "^18.x.x"
     },
@@ -34,6 +34,6 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/luuxis/Selvania-Launcher.git"
+        "url": "git+https://github.com/Almyria/launcher.git"
     }
 }
