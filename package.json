@@ -1,7 +1,7 @@
 {
     "name": "launcher",
     "preductname": "Almyria Launcher",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Launcher pour le serveur Almyria",
     "main": "src/app.js",
     "author": "Luuxis, LeWarpy <coucou@lewarpy.fr",

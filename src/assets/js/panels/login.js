@@ -19,8 +19,8 @@ class Login {
     }
 
     getOnline() {
-        console.log(`Initializing microsoft Panel...`)
-        console.log(`Initializing mojang Panel...`)
+        console.log(`Initializing Microsoft Panel...`)
+        console.log(`Initializing Mojang Panel...`)
         this.loginMicrosoft();
         this.loginMojang();
         document.querySelector('.cancel-login').addEventListener("click", () => {
@@ -30,9 +30,9 @@ class Login {
     }
 
     getOffline() {
-        console.log(`Initializing microsoft Panel...`)
-        console.log(`Initializing mojang Panel...`)
-        console.log(`Initializing offline Panel...`)
+        console.log(`Initializing Microsoft Panel...`)
+        console.log(`Initializing Mojang Panel...`)
+        console.log(`Initializing Offline Panel...`)
         this.loginMicrosoft();
         this.loginOffline();
         document.querySelector('.cancel-login').addEventListener("click", () => {

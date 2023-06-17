@@ -1,3 +1,8 @@
+:root {
+    --couleur-primaire: #EB4760;
+    --couleur-secondaire: #ff3856:
+}
+
 .tabs-settings-btn {
     position: fixed;
     bottom: 0;
@@ -15,30 +20,32 @@
     width: 160px;
     height: 37px;
     margin: auto 30px;
-    background: #00bd7a;
-    border: 4px solid #00bd7a;
-    font: normal normal bold 20px/25px Poppins;
+    background: var(--couleur-primaire);
+    border: 4px solid var(--couleur-primaire);
+    font: normal normal bold 20px/25px Roboto;
     cursor: pointer;
-    box-shadow: 0 0 5px #00bd7a;
+    box-shadow: 0 0 5px var(--couleur-primaire);
     outline: none;
+    color: white;
+    border-radius: 8px 0 8px 0;
 }
 
 .tab-btn-css:hover {
-    background: #006e47;
-    box-shadow: 0 0 5px #006e47;
-    border: 4px solid #006e47;
+    background: #ff2949;
+    box-shadow: 0 0 5px #ff2949;
+    border: 4px solid #ff2949;
 }
 
 .active-tab-btn {
-    background: #006e47;
-    border: 4px solid #bd5d26;
-    box-shadow: 0 0 5px #bd5d26;
+    background: #ff2949;
+    border: 4px solid #ff3856;
+    box-shadow: 0 0 5px #ff3856;
 }
 
 .active-tab-btn:hover {
-    background: #006e47;
-    border: 4px solid #bd5d26;
-    box-shadow: 0 0 5px #bd5d26;
+    background: #ff2949;
+    border: 4px solid #ff3856;
+    box-shadow: 0 0 5px #ff3856;
 }
 
 .tabs-settings-content {
@@ -62,13 +69,13 @@
 
 .information {
     padding: 0 40px;
-    font: normal normal normal 16px/25px Poppins;
+    font: normal normal normal 16px/25px Roboto;
     color: #F1F1F1;
 }
 
 .title-settings {
     text-align: center;
-    font: normal normal bold 20px/25px Poppins;
+    font: normal normal bold 20px/25px Roboto;
     color: #F1F1F1;
     margin: 2% 0;
 }
@@ -107,7 +114,7 @@
     height: 10%;
     border: none;
     border-radius: 15px;
-    font: normal normal bold 30px/40px Poppins;
+    font: normal normal bold 30px/40px Roboto;
     color: #D1D1D1;
     background-color: #303030;
     box-shadow: 1px 2px 5px #585858;
@@ -122,10 +129,10 @@
 
 .account {
     display: inline-block;
-    background: #00bd7a;
-    box-shadow: 0 0 5px #006e47;
-    border: 4px solid #00bd7a;
-    font: normal normal bold 30px/40px Poppins;
+    background: var(--couleur-primaire);
+    box-shadow: 0 0 5px var(--couleur-secondaire);
+    border: 4px solid var(--couleur-primaire);
+    font: normal normal bold 30px/40px Roboto;
     width: 500px;
     height: 100px;
     margin: 1% 2%;
@@ -150,7 +157,7 @@
 .account-name {
     margin: 0 100px;
     margin-top: 15px;
-    font: normal normal bold 24px/35px Poppins;
+    font: normal normal bold 24px/35px Roboto;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -160,7 +167,7 @@
 
 .account-uuid {
     margin: 0 100px;
-    font: normal normal normal 18px/27px Poppins;
+    font: normal normal normal 18px/27px Roboto;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -188,15 +195,16 @@
 }
 
 .active-account {
-    background: #006e47;
-    border: 4px solid #bd5d26;
-    box-shadow: 0 0 5px #bd5d26;
+    background: var(--couleur-primaire);
+    border: 4px solid #ff3856;
+    box-shadow: 0 0 5px #ff3856;
+    color: white;
 }
 
 .active-account:hover {
-    background: #006e47;
-    border: 4px solid #bd5d26;
-    box-shadow: 0 0 5px #bd5d26;
+    background: #ff2949;
+    border: 4px solid #ff3856;
+    box-shadow: 0 0 5px #ff3856;
 }
 
 
@@ -248,7 +256,7 @@
 .slider-touch-right span:after {
     content: attr(value);
     color: #00bd7a;
-    font: normal normal bold 12px/18px Poppins;
+    font: normal normal bold 12px/18px Roboto;
     white-space: nowrap;
     pointer-events: none;
     position: absolute;
@@ -282,13 +290,13 @@
 .ram-info {
     display: flex;
     align-items: center;
-    font: normal normal bold 15px/25px Poppins;
+    font: normal normal bold 15px/25px Roboto;
     color: #F1F1F1F1;
 }
 
 .path {
     min-width: 50%;
-    font: normal normal normal 13px/20px Poppins;
+    font: normal normal normal 13px/20px Roboto;
     border-radius: 18px;
     padding: 8px 16px;
     margin: 0 40px;
@@ -302,7 +310,7 @@
 }
 
 .path-button {
-    font: normal normal bold 13px/20px Poppins;
+    font: normal normal bold 13px/20px Roboto;
     border-radius: 18px;
     padding: 8px 30px;
     background-color: #00bd7a;
@@ -318,7 +326,7 @@
 }
 
 .path-button-reset {
-    font: normal normal bold 13px/20px Poppins;
+    font: normal normal bold 13px/20px Roboto;
     border-radius: 18px;
     padding: 8px 30px;
     background-color: #00bd7a;
@@ -340,7 +348,7 @@
 
 .args-settings {
     min-width: 50%;
-    font: normal normal normal 13px/20px Poppins;
+    font: normal normal normal 13px/20px Roboto;
     border-radius: 18px;
     padding: 8px 16px;
     margin: 0 40px;
@@ -422,7 +430,7 @@
 .select {
     border-radius: 40px;
     background-color: #00bd7a;
-    font: normal normal normal 12px/18px Poppins;
+    font: normal normal normal 12px/18px Roboto;
     transition: color .2s, box-shadow .2s;
     border: none;
     outline: none;

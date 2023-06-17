@@ -6,7 +6,7 @@
     width: 35%;
     background: #121212;
     padding: 20px;
-    font: normal normal bold 19px/29px Poppins;
+    font: normal normal bold 19px/29px Roboto;
     color: #E1E1E1;
     border-radius: 15px;
     text-align: center;
@@ -25,7 +25,7 @@
     background-color: #00bd7a;
     box-shadow: 0 0 5px #00bd7a;
     color: #121212;
-    font: normal normal bold 19px/29px Poppins;
+    font: normal normal bold 19px/29px Roboto;
     cursor: pointer;
 }
 
@@ -53,7 +53,7 @@
     width: 35%;
     background: #121212;
     padding: 0 20px;
-    font: normal normal bold 19px/29px Poppins;
+    font: normal normal bold 19px/29px Roboto;
     color: #E1E1E1;
     border-radius: 15px;
     display: none;
@@ -69,7 +69,7 @@
 }
 
 .login-mojang-input {
-    font-family: 'Poppins';
+    font-family: 'Roboto';
     letter-spacing: 2px;
     color: #fff;
     border: solid 0px rgba(0, 0, 0, 0);
@@ -97,7 +97,7 @@
     background-color: #00bd7a;
     box-shadow: 0 0 5px #00bd7a;
     color: #121212;
-    font: normal normal bold 19px/29px Poppins;
+    font: normal normal bold 19px/29px Roboto;
     cursor: pointer;
 }
 
@@ -110,7 +110,7 @@
     border: none;
     background-color: #ffffff00;
     color: #F1F1F1;
-    font: normal normal bold 19px/29px Poppins;
+    font: normal normal bold 19px/29px Roboto;
     cursor: pointer;
 }
 
