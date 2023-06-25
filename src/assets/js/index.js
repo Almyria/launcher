@@ -22,8 +22,12 @@ class Splash {
 
     async startAnimation() {
         let splashes = [
-            { "message": "Ecipe de choce > Les mieux", "author": "LeWarpy" },
-            { "message": "À quand Almyriavision ?", "author": "LeWarpy" },
+            { "message": "Merci aux VIPs pour votre soutien !", "author": "warpy" },
+            { "message": "c'est reparti comme en 46", "author": "stormkun" },
+            { "message": "koduro", "author": "koduro" },
+            { "message": "KKC > all", "author": ".neville_" },
+            { "message": "Ecipe de choce > Les mieux", "author": "warpy" },
+            { "message": "À quand AlmyriaVision ?", "author": "warpy" },
             { "message": "Salut à tous c'est Fanta", "author": "TheFantasio974" }
         ]
         let splash = splashes[Math.floor(Math.random() * splashes.length)];
