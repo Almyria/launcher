@@ -22,6 +22,13 @@ class Splash {
 
     async startAnimation() {
         let splashes = [
+            { "message": "un bonjour à Evan", "author": "eveleiden" },
+            { "message": "ah les bâtards ils ont fumé pop simoké", "author": "eveleiden" },
+            { "message": "Vous avez les cramptés?", "author": "boulbamed" },
+            { "message": "Doumeining Town > BingChilling City", "author": "eveleiden"},
+            { "message": "test", "author": "zerto." },
+            { "message": "Début de l'attaque aux hamsters sauvages sur votre domicile", "author": "eveleiden" },
+            { "message": "Merci aux donateurs pour votre soutien !", "author": "warpy" },
             { "message": "Merci aux VIPs pour votre soutien !", "author": "warpy" },
             { "message": "c'est reparti comme en 46", "author": "stormkun" },
             { "message": "koduro", "author": "koduro" },
