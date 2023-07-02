@@ -1,11 +1,11 @@
 {
     "name": "launcher",
     "preductname": "Almyria Launcher",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Launcher pour le serveur Almyria",
     "main": "src/app.js",
     "author": "Luuxis, LeWarpy <coucou@lewarpy.fr",
-    "url": "http://almyria-launcher-files.sc1char8820.universe.wf",
+    "url": "https://launcher.almyria.fr",
     "engines": {
         "node": "^18.x.x"
     },
