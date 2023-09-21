@@ -4,11 +4,15 @@
  */
 
 const pkg = require('../package.json');
-const fetch = require("node-fetch")
+const fetch = require("node-fetch");
+const axios = require('axios');
 let url = pkg.user ? `${pkg.url}/${pkg.user}` : pkg.url
+let api = pkg.api_url;
 
 let config = `${url}/launcher/config-launcher/config.json`;
 let news = `${url}/launcher/news-launcher/GetNews.php`;
+let launcherstatus = `${api}/launcher/status`;
+let staffmembers = `${api}/users/staffmembers`;
 
 class Config {
     GetConfig() {
@@ -33,6 +37,17 @@ class Config {
         } else {
             return false;
         }
+    }
+
+    async GetLauncherStatus() {
+        let status = await axios.get(launcherstatus);
+        return status.data[0].launcher_status;
+    }
+
+    async GetStaffUsernames() {
+        let staff = await axios.get(staffmembers);
+        // Return only the usernames
+        return staff.data.map(staff => staff.uuid_mc);
     }
 }
 

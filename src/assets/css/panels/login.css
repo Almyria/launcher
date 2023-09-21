@@ -24,7 +24,7 @@
     height: 2em;
     background-color: #EB4760;
     box-shadow: 0 0 5px #EB4760;
-    color: #121212;
+    color: #ffffff;
     font: normal normal bold 19px/29px Roboto;
     cursor: pointer;
 }
@@ -121,4 +121,8 @@
 .cancel:hover:disabled {
     color: #F1F1F1;
     cursor: default;
+}
+
+.no-acc {
+    margin-top: 5%;
 }
