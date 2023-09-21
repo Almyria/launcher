@@ -1,11 +1,12 @@
 {
     "name": "launcher",
     "preductname": "Almyria Launcher",
-    "version": "1.0.5",
-    "description": "Launcher pour le serveur Almyria",
+    "version": "1.0.6",
+    "description": "Launcher pour le serveur AlmyriaCraft",
     "main": "src/app.js",
     "author": "Luuxis, LeWarpy <coucou@lewarpy.fr",
     "url": "https://launcher.almyria.fr",
+    "api_url": "http://localhost:42069",
     "engines": {
         "node": "^18.x.x"
     },
@@ -20,6 +21,7 @@
         "ext": "js,html,css"
     },
     "dependencies": {
+        "axios": "^1.5.0",
         "electron-updater": "^5.0.1",
         "jimp": "^0.22.8",
         "minecraft-java-core": "^3.5.0",

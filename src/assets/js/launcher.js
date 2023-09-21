@@ -14,6 +14,7 @@ import { config, logger, changePanel, database, addAccount, accountSelect } from
 import Login from './panels/login.js';
 import Home from './panels/home.js';
 import Settings from './panels/settings.js';
+import Maintenance from './panels/maintenance.js';
 
 class Launcher {
     async init() {
@@ -21,10 +22,33 @@ class Launcher {
         console.log("Initializing Launcher...");
         if (process.platform == "win32") this.initFrame();
         this.config = await config.GetConfig().then(res => res);
+        this.launcher = await config.GetLauncherStatus().then(res => res);
         this.news = await config.GetNews().then(res => res);
         this.database = await new database().init();
-        this.createPanels(Login, Home, Settings);
-        this.getaccounts();
+
+        if (this.launcher == 1) {
+            console.log("Launcher is on");
+            this.createPanels(Login, Home, Settings);
+            this.getaccounts();
+        } else if (this.launcher == 2) {
+            console.log("Launcher is on staff only");
+            let staff = await config.GetStaffUsernames().then(res => res);
+            let username = (await this.database.getAll('accounts'))[0]?.value?.uuid;
+            console.log(username);
+            if (staff.includes(username)) {
+                this.createPanels(Login, Home, Settings);
+                this.getaccounts();
+            } else {
+                this.createPanels(Maintenance);
+                document.querySelector(".preload-content").style.display = "none";
+                changePanel("maintenance");
+            }
+        } else {
+            console.log("Launcher is off");
+            this.createPanels(Maintenance);
+            document.querySelector(".preload-content").style.display = "none";
+            changePanel("maintenance");
+        }
     }
 
     initLog() {
@@ -160,10 +184,6 @@ class Launcher {
                     if (account.uuid === selectaccount) this.database.update({ uuid: "1234" }, 'accounts-selected')
                 }
             }
-
-
-
-
             
             if (!(await this.database.get('1234', 'accounts-selected')).value.selected) {
                 let uuid = (await this.database.getAll('accounts'))[0]?.value?.uuid
