@@ -6,7 +6,7 @@
     "main": "src/app.js",
     "author": "Luuxis, LeWarpy <coucou@lewarpy.fr",
     "url": "https://launcher.almyria.fr",
-    "api_url": "http://localhost:42069",
+    "api_url": "https://api.almyria.fr",
     "engines": {
         "node": "^18.x.x"
     },
