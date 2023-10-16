@@ -8,11 +8,13 @@ const fetch = require("node-fetch");
 const axios = require('axios');
 let url = pkg.user ? `${pkg.url}/${pkg.user}` : pkg.url
 let api = pkg.api_url;
+let cdn = pkg.cdn_url;
 
-let config = `${url}/launcher/config-launcher/config.json`;
+let config = `${cdn}/config.json`;
 let news = `${url}/launcher/news-launcher/GetNews.php`;
 let launcherstatus = `${api}/launcher/status`;
 let staffmembers = `${api}/users/staffmembers`;
+let checkVIP = `${api}/minecraft/checkvip`;
 
 class Config {
     GetConfig() {

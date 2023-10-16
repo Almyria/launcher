@@ -1,11 +1,12 @@
 {
     "name": "launcher",
     "preductname": "Almyria Launcher",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "Launcher pour le serveur AlmyriaCraft",
     "main": "src/app.js",
     "author": "Luuxis, LeWarpy <coucou@lewarpy.fr",
     "url": "https://launcher.almyria.fr",
+    "cdn_url": "https://cdn-launcher.almyria.fr",
     "api_url": "https://api.almyria.fr",
     "engines": {
         "node": "^18.x.x"
