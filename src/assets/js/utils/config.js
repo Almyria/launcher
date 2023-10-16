@@ -14,7 +14,6 @@ let config = `${cdn}/config.json`;
 let news = `${url}/launcher/news-launcher/GetNews.php`;
 let launcherstatus = `${api}/launcher/status`;
 let staffmembers = `${api}/users/staffmembers`;
-let checkVIP = `${api}/minecraft/checkvip`;
 
 class Config {
     GetConfig() {

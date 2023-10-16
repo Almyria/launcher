@@ -8,6 +8,8 @@ import database from './utils/database.js';
 import logger from './utils/logger.js';
 import slider from './utils/slider.js';
 
+const axios = require('axios');
+
 export {
     config as config,
     database as database,
@@ -45,9 +47,17 @@ function accountSelect(uuid) {
 
     if (activeAccount) activeAccount.classList.toggle('active-account');
     account.classList.add('active-account');
-    headplayer(pseudo);
+    headplayer(pseudo, uuid);
 }
 
-function headplayer(pseudo) {
+function headplayer(pseudo, uuid) {
     document.querySelector(".player-head").style.backgroundImage = `url(https://minotar.net/helm/${pseudo}/100)`;
+    //Add border to the head
+    axios.get(`https://api.almyria.fr/minecraft/checkvip/` + uuid).then(res => {
+        if (res.data == true) {
+            document.querySelector(".player-head").style.border = "3px solid gold";
+        } else {
+            document.querySelector(".player-head").style.border = "2px solid #ffffff";
+        }
+    })
 }
