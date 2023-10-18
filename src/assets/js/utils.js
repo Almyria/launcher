@@ -50,14 +50,24 @@ function accountSelect(uuid) {
     headplayer(pseudo, uuid);
 }
 
-function headplayer(pseudo, uuid) {
+async function isVIP(uuid) {
+    try {
+        const { data: response } = await axios.get(`https://api.almyria.fr/minecraft/checkvip/` + uuid); 
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function headplayer(pseudo, uuid) {
     document.querySelector(".player-head").style.backgroundImage = `url(https://minotar.net/helm/${pseudo}/100)`;
-    //Add border to the head
-    axios.get(`https://api.almyria.fr/minecraft/checkvip/` + uuid).then(res => {
-        if (res.data == true) {
-            document.querySelector(".player-head").style.border = "3px solid gold";
-        } else {
-            document.querySelector(".player-head").style.border = "2px solid #ffffff";
-        }
-    })
+    document.querySelector(".player-username").textContent = pseudo;
+
+    const checkVIP = await isVIP(uuid);
+ 
+    if (checkVIP == true) {
+        document.querySelector(".player-head").style.border = "3px solid gold";
+    } else {
+        document.querySelector(".player-head").style.border = "2px solid #ffffff";
+    }
 }

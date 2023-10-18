@@ -31,11 +31,14 @@ class Launcher {
             this.createPanels(Login, Home, Settings);
             this.getaccounts();
         } else if (this.launcher == 2) {
-            console.log("Launcher is on staff only");
+            console.log("Launcher is on staff only mode");
             let staff = await config.GetStaffUsernames().then(res => res);
             let username = (await this.database.getAll('accounts'))[0]?.value?.uuid;
-            console.log(username);
-            if (staff.includes(username)) {
+            if (username === undefined) {
+                this.createPanels(Login, Home, Settings);
+                document.querySelector(".preload-content").style.display = "none";
+                changePanel("login");
+            } else if (staff.includes(username)) {
                 this.createPanels(Login, Home, Settings);
                 this.getaccounts();
             } else {
