@@ -174,6 +174,32 @@ class Settings {
         let closeLauncher = document.getElementById("launcher-close");
         let closeAll = document.getElementById("launcher-close-all");
         let openLauncher = document.getElementById("launcher-open");
+        let resetGame = document.getElementById("reset-game");
+
+        // Delete game files
+        resetGame.addEventListener("click", () => {
+            // Confirmation dialog
+            let confirmation = confirm("Êtes-vous sûr de vouloir réinitialiser le jeu ?");
+            if(!confirmation) return;
+
+            // Delete game files
+            let gamePath = `${dataDirectory}/${process.platform == 'darwin' ? this.config.dataDirectory : `.${this.config.dataDirectory}`}`;
+
+            if(process.platform == 'win32') {
+                let cmd = require('node-cmd');
+                // Delete files from gamePath
+                cmd.run(`rmdir /s /q "${gamePath}"`);
+                console.log('Files win32 deleted')
+            } else {
+                const { exec } = require('child_process');
+                // Delete files from gamePath
+                exec(`rm -rf "${gamePath}"`);
+                console.log('Files unix deleted')
+            }
+
+            // Confirmation message
+            alert("Le jeu a été réinitialisé avec succès.");
+        })
 
         if(settingsLauncher.launcher.close === 'close-launcher') {
             closeLauncher.checked = true;

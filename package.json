@@ -26,6 +26,7 @@
         "electron-updater": "^5.0.1",
         "jimp": "^0.22.8",
         "minecraft-java-core": "^3.5.0",
+        "node-cmd": "^5.0.0",
         "node-fetch": "^2.6.7",
         "png2icons": "^2.0.1"
     },

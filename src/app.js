@@ -13,7 +13,6 @@ const fs = require('fs');
 const UpdateWindow = require("./assets/js/windows/updateWindow.js");
 const MainWindow = require("./assets/js/windows/mainWindow.js");
 
-let data
 let dev = process.env.NODE_ENV === 'dev';
 
 if (dev) {
