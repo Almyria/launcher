@@ -15,6 +15,7 @@ import Login from './panels/login.js';
 import Home from './panels/home.js';
 import Settings from './panels/settings.js';
 import Maintenance from './panels/maintenance.js';
+import Participation from './panels/participation.js';
 
 class Launcher {
     async init() {
@@ -28,18 +29,18 @@ class Launcher {
 
         if (this.launcher == 1) {
             console.log("Launcher is on");
-            this.createPanels(Login, Home, Settings);
+            this.createPanels(Login, Home, Settings, Participation);
             this.getaccounts();
         } else if (this.launcher == 2) {
             console.log("Launcher is on staff only mode");
             let staff = await config.GetStaffUsernames().then(res => res);
             let username = (await this.database.getAll('accounts'))[0]?.value?.uuid;
             if (username === undefined) {
-                this.createPanels(Login, Home, Settings);
+                this.createPanels(Login, Home, Settings, Participation);
                 document.querySelector(".preload-content").style.display = "none";
                 changePanel("login");
             } else if (staff.includes(username)) {
-                this.createPanels(Login, Home, Settings);
+                this.createPanels(Login, Home, Settings, Participation);
                 this.getaccounts();
             } else {
                 this.createPanels(Maintenance);

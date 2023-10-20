@@ -8,6 +8,7 @@
 import { database, changePanel, addAccount, accountSelect } from '../utils.js';
 const { Mojang } = require('minecraft-java-core');
 const { ipcRenderer } = require('electron');
+const axios = require('axios');
 
 class Login {
     static id = "login";
@@ -80,7 +81,8 @@ class Login {
 
                 addAccount(account)
                 accountSelect(account.uuid)
-                changePanel("home");
+
+
 
                 microsoftBtn.disabled = false;
                 mojangBtn.disabled = false;
@@ -94,6 +96,15 @@ class Login {
 
             });
         })
+    }
+
+    async checkParticipation(event_id, uuid) {
+        try {
+            const { data: response } = await axios.get(`https://api.almyria.fr/minecraft/event/` + event_id + `/` + uuid); 
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     async loginMojang() {

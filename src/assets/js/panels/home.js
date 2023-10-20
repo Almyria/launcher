@@ -11,6 +11,7 @@ const { Launch, Status } = require('minecraft-java-core');
 const { ipcRenderer } = require('electron');
 const launch = new Launch();
 const pkg = require('../package.json');
+const axios = require('axios');
 
 const dataDirectory = process.env.APPDATA || (process.platform == 'darwin' ? `${process.env.HOME}/Library/Application Support` : process.env.HOME)
 
@@ -136,7 +137,19 @@ class Home {
 
             playBtn.style.display = "none"
             info.style.display = "block"
-            launch.Launch(opts);
+
+            this.checkParticipation(this.config.event_id, account.uuid).then(response => {
+                if (response == true) {
+                    console.log("Candidature OK!")
+                    launch.Launch(opts);
+                } else {
+                    console.log("Candidature inexistante, refusée ou en attente de validation")
+                    changePanel("participation");
+                }
+            }).catch(err => {
+                console.log(err)
+                changePanel("maintenance");
+            })
 
             launch.on('extract', extract => {
                 console.log(extract);
@@ -229,6 +242,16 @@ class Home {
         let day = date.getDate()
         let allMonth = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
         return { year: year, month: allMonth[month - 1], day: day }
+    }
+
+    async checkParticipation(event_id, uuid) {
+        try {
+            const { data: response } = await axios.get(`https://api.almyria.fr/minecraft/event/` + event_id + `/` + uuid); 
+            console.log(response)
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 export default Home;
