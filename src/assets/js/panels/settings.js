@@ -5,7 +5,7 @@
 
 'use strict';
 
-import { database, changePanel, accountSelect, Slider } from '../utils.js';
+import { database, changePanel, accountSelect, Slider, oauth } from '../utils.js';
 const dataDirectory = process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Application Support' : process.env.HOME)
 
 const os = require('os');
@@ -55,6 +55,27 @@ class Settings {
         document.querySelector('.add-account').addEventListener('click', () => {
             document.querySelector(".cancel-login").style.display = "contents";
             changePanel("login");
+        })
+
+        document.querySelector('.almyria-login').addEventListener('click', () => {
+            const oauthConfig = {
+                clientId: 'VotreClientId',
+                clientSecret: 'VotreClientSecret',
+                redirectUri: 'http://localhost:3000/auth/callback', // À ajuster
+                authUrl: 'https://exemple.com/oauth/authorize', // À ajuster
+                tokenUrl: 'https://exemple.com/oauth/token', // À ajuster
+              };
+            
+              const oauthConnector = new oauth(oauthConfig);
+            
+              oauthConnector.openAuthWindow()
+                .then(tokenData => {
+                  console.log('Access Token:', tokenData.access_token);
+                  console.log('Refresh Token:', tokenData.refresh_token);
+                })
+                .catch(error => {
+                  console.error('OAuth Error:', error);
+                });
         })
     }
 

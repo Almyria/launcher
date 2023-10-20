@@ -53,7 +53,11 @@ ipcMain.on('main-window-show', () => MainWindow.getWindow().show())
 
 ipcMain.handle('Microsoft-window', async(event, client_id) => {
     return await new Microsoft(client_id).getAuth();
-})
+});
+
+ipcMain.handle('Almyria-window', async(event) => {
+    return await new Almyria().getAuth();
+});
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit();

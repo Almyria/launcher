@@ -7,6 +7,7 @@ import config from './utils/config.js';
 import database from './utils/database.js';
 import logger from './utils/logger.js';
 import slider from './utils/slider.js';
+import oauth from './utils/oauth.js';
 
 const axios = require('axios');
 
@@ -17,7 +18,8 @@ export {
     changePanel as changePanel,
     addAccount as addAccount,
     slider as Slider,
-    accountSelect as accountSelect
+    accountSelect as accountSelect,
+    oauth as oauth
 }
 
 function changePanel(id) {
