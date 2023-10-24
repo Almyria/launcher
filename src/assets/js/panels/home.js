@@ -203,6 +203,8 @@ class Home {
         let serverMs = document.querySelector('.server-text .desc');
         let playersConnected = document.querySelector('.etat-text .text');
         let online = document.querySelector(".etat-text .online");
+        
+        /**
         let serverPing = await new Status(this.config.status.ip, this.config.status.port).getStatus();
 
         if (!serverPing.error) {
@@ -214,6 +216,7 @@ class Home {
             nameServer.textContent = 'Serveur indisponible';
             serverMs.innerHTML = `<span class="red">Hors ligne</span>`;
         }
+        */
     }
 
     initBtn() {

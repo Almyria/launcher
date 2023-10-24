@@ -42,6 +42,10 @@ class database {
                 if (!db.objectStoreNames.contains('screen')) {
                     db.createObjectStore('screen', { keyPath: "key" });
                 }
+
+                if (!db.objectStoreNames.contains('sentry')) {
+                    db.createObjectStore('sentry', { keyPath: "key" });
+                }
             }
 
             request.onsuccess = (event) => {

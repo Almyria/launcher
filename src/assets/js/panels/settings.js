@@ -176,6 +176,17 @@ class Settings {
         let openLauncher = document.getElementById("launcher-open");
         let resetGame = document.getElementById("reset-game");
 
+        let telemetryDatabase = (await this.database.get('1234', 'sentry'))?.value;
+        let allowTelemetry = document.getElementById("allow-telemetry");
+
+        if (telemetryDatabase?.sentry) allowTelemetry.checked = true;
+        else allowTelemetry.checked = false;
+
+        allowTelemetry.addEventListener("change", () => {
+            telemetryDatabase.sentry = allowTelemetry.checked;
+            this.database.update(telemetryDatabase, 'sentry');
+        })
+
         // Delete game files
         resetGame.addEventListener("click", () => {
             // Confirmation dialog
@@ -282,6 +293,11 @@ class Settings {
                     close: 'close-launcher'
                 }
             }, 'launcher')
+        }
+
+        // Sentry telemetry
+        if (!(await this.database.getAll('sentry')).length) {
+            this.database.add({ uuid: "1234", sentry: true }, 'sentry')
         }
 
         if (!(await this.database.getAll('ram')).length) {
