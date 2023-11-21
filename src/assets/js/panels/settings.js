@@ -296,9 +296,6 @@ class Settings {
         }
 
         // Sentry telemetry
-        if (!(await this.database.getAll('sentry')).length) {
-            this.database.add({ uuid: "1234", sentry: true }, 'sentry')
-        }
 
         if (!(await this.database.getAll('ram')).length) {
             this.database.add({ uuid: "1234", ramMin: "1", ramMax: "2" }, 'ram')

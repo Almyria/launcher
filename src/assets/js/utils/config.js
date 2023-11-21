@@ -14,6 +14,7 @@ let config = `${cdn}/config.json`;
 let news = `${url}/launcher/news-launcher/GetNews.php`;
 let launcherstatus = `${api}/launcher/status`;
 let staffmembers = `${api}/users/staffmembers`;
+let checkbughunter = `${api}/minecraft/checkbughunter`;
 
 class Config {
     GetConfig() {
@@ -49,6 +50,11 @@ class Config {
         let staff = await axios.get(staffmembers);
         // Return only the usernames
         return staff.data.map(staff => staff.uuid_mc);
+    }
+
+    async IsPlayerBugHunter(uuid) {
+        let bughunter = await axios.get(checkbughunter + "/" + uuid);
+        return bughunter.data;
     }
 }
 
