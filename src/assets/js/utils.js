@@ -71,12 +71,7 @@ async function VIPperks(uuid) {
  
     if (checkVIP == true) {
         var styleVIP = `
-        .account-name::before {
-            font-weight: bold;
-            color: gold;
-            content: "[VIP] ";
-        }
-        .player-username::before {
+        .account-name::before, .player-username::before {
             font-weight: bold;
             color: gold;
             content: "[VIP] ";
