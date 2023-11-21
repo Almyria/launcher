@@ -59,24 +59,24 @@ async function isVIP(uuid) {
     }
 }
 
-async function isBugHunter(uuid) {
-    try {
-        const { data: response } = await axios.get(`https://api.almyria.fr/minecraft/checkbughunter/` + uuid); 
-        return response;
-    } catch (error) {
-        console.log(error);
-    }
-}
-
 async function headplayer(pseudo, uuid) {
     document.querySelector(".player-head").style.backgroundImage = `url(https://skins.almyria.fr/face/${uuid}?scale=100)`;
     document.querySelector(".player-username").textContent = pseudo;
 
+    await VIPperks(uuid);
+}
+
+async function VIPperks(uuid) {
     const checkVIP = await isVIP(uuid);
  
     if (checkVIP == true) {
         var styleVIP = `
         .account-name::before {
+            font-weight: bold;
+            color: gold;
+            content: "[VIP] ";
+        }
+        .player-username::before {
             font-weight: bold;
             color: gold;
             content: "[VIP] ";
