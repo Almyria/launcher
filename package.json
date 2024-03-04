@@ -13,28 +13,31 @@
     },
     "scripts": {
         "start": "cross-env-shell NODE_ENV=dev electron .",
-        "build": "node build.js --build",
-        "icon": "node build.js --icon=https://raw.githubusercontent.com/luuxis/Selvania-Launcher/master/src/assets/images/icon.png",
-        "dev": "nodemon --exec npm start"
+        "dev": "cross-env-shell DEV_TOOL=open nodemon --exec npm start",
+        "build": "node build.js --obf=false --build=platform",
+        "icon": "node build.js --icon=https://raw.githubusercontent.com/luuxis/Selvania-Launcher/master/src/assets/images/icon.png"
     },
-    "license": "CC0",
+    "license": "CCANC",
     "nodemonConfig": {
-        "ext": "js,html,css"
+        "ext": "js,html,css",
+        "ignore": "**/test"
     },
     "dependencies": {
-        "axios": "^1.5.0",
-        "electron-updater": "^5.0.1",
-        "jimp": "^0.22.8",
-        "minecraft-java-core": "^3.5.0",
-        "node-cmd": "^5.0.0",
-        "node-fetch": "^2.6.7",
-        "png2icons": "^2.0.1"
+        "electron-updater": "^6.1.4",
+        "minecraft-java-core": "^3.8.1",
+        "node-bdd": "^2.0.3",
+        "node-fetch": "^2.7.0",
+        "xml-js": "^1.6.11",
+        "axios": "^1.5.0"
     },
     "devDependencies": {
         "cross-env": "^7.0.3",
-        "electron": "^20.0.0",
-        "electron-builder": "^23.0.3",
-        "nodemon": "^2.0.16"
+        "electron": "^27.0.4",
+        "electron-builder": "^24.6.4",
+        "javascript-obfuscator": "^4.1.0",
+        "jimp": "^0.22.10",
+        "nodemon": "^3.0.1",
+        "png2icons": "^2.0.1"
     },
     "repository": {
         "type": "git",
