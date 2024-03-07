@@ -31,7 +31,7 @@ class Login {
         console.log('Initializing Microsoft login...');
         let popupLogin = new popup();
         let loginHome = document.querySelector('.login-home');
-        let microsoftBtn = document.querySelector('.connect-home');
+        let microsoftBtn = document.querySelector('#loginwithmicrosoft');
         loginHome.style.display = 'block';
 
         microsoftBtn.addEventListener("click", () => {
@@ -199,11 +199,11 @@ class Login {
         configClient.account_selected = account.ID;
 
         for (let instance of instancesList) {
-            if (instance.whitelistActive) {
-                let whitelist = instance.whitelist.find(whitelist => whitelist == account.name)
-                if (whitelist !== account.name) {
+            if (instance.is_staff) {
+                let staff = await config.GetStaffUsernames().then(res => res);
+                if (staff.includes(account.name)) {
                     if (instance.name == instanceSelect) {
-                        let newInstanceSelect = instancesList.find(i => i.whitelistActive == false)
+                        let newInstanceSelect = instancesList.find(i => i.is_staff == false)
                         configClient.instance_selct = newInstanceSelect.name
                         await setStatus(newInstanceSelect.status)
                     }

@@ -127,7 +127,7 @@ class Home {
         for (let instance of instancesList) {
             if (instance.is_staff) {
                 let staff = await config.GetStaffUsernames().then(res => res);
-                if (!staff.includes(auth.name)) {
+                if (!staff.includes(auth?.name)) {
                     if (instance.name == instanceSelect) {
                         let newInstanceSelect = instancesList.find(i => i.is_staff == false)
                         let configClient = await this.db.readData('configClient')
@@ -171,7 +171,7 @@ class Home {
                 instancesListPopup.innerHTML = ''
                 for (let instance of instancesList) {
                     if (instance.is_staff) {
-                        if (staff.includes(auth.name)) {
+                        if (staff.includes(auth?.name)) {
                             if (instance.name == instanceSelect) {
                                 instancesListPopup.innerHTML += `<div id="${instance.name}" class="instance-elements active-instance">${instance.fullname}</div>`
                             } else {

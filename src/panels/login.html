@@ -1,11 +1,30 @@
-<div class="container">
+<style>
+p, h5 {
+    color: #fff;
+}
+#loginwithmicrosoft {
+    background: transparent;
+    border: none !important;
+    cursor: pointer;
+}
+</style>
+<div class="container dark">
     <div class="login-home login-tabs">
-        <div class="login-text">Veuillez vous identifier afin de jouer.</div>
-
-        <div class="login-options">
-            <button class="connect connect-home">Connexion</button>
-            <button class="cancel cancel-home"  style="display: none;">annuler</button>
+        <img alt="logo" style="height: 120px" src="assets/images/logo/AO.png"/>
+        <p>Connectez-vous avec votre compte <span class="store">Microsoft</span> pour vous connecter au launcher.</p>
+        <p>Vos données de connexion restent sur votre ordinateur, elles ne sont pas partagées.</p>
+        <div class="login-type">
+            <div class="login-options">
+                <button id="loginwithmicrosoft">
+                    <img src="assets/images/misc/ms-symbollockup_signin_light.svg">
+                </button>
+                <button class="cancel cancel-home"  style="display: none;">annuler</button>
+            </div>
         </div>
+        <br>
+        <button class="cancel cancel-login" style="display:none">Annuler</button>
+        <hr>
+        <div class="no-acc"><h5>Politique de confidentialté disponible sur www.almyria.fr/legal</h5></div>
     </div>
 
     <div class="login-offline login-tabs">
