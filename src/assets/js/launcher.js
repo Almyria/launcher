@@ -27,6 +27,10 @@ class Launcher {
         if (await this.config.error) return this.errorConnect()
         this.db = new database();
         await this.initConfigClient();
+        if (this.config.maintenance == true) {
+            this.createPanels(Maintenance);
+            return changePanel('maintenance');
+        }
         this.createPanels(Login, Home, Settings);
         this.startLauncher();
     }
@@ -144,7 +148,7 @@ class Launcher {
                     console.log(`Account Type: ${account.meta.type} | Username: ${account.name}`);
                     popupRefresh.openPopup({
                         title: 'Connexion',
-                        content: `Refresh account Type: ${account.meta.type} | Username: ${account.name}`,
+                        content: `Connecté·e en tant que ${account.name}`,
                         color: 'var(--color)',
                         background: false
                     });
