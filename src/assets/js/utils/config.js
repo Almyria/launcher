@@ -13,7 +13,7 @@ let cdn = pkg.cdn_url;
 let config = `${cdn}/config.json`;
 let news = `${url}/launcher/news-launcher/GetNews.php`;
 let launcherstatus = `${api}/launcher/status`;
-let staffmembers = `${api}/users/staffmembers`;
+let staffmembers = `${api}/config/staffmembers`;
 
 class Config {
     GetConfig() {
@@ -42,13 +42,13 @@ class Config {
 
     async GetLauncherStatus() {
         let status = await axios.get(launcherstatus);
-        return status.data[0].launcher_status;
+        return status.data.status;
     }
 
     async GetStaffUsernames() {
         let staff = await axios.get(staffmembers);
         // Return only the usernames
-        return staff.data.map(staff => staff.uuid_mc);
+        return staff.data.staff.map(staff => staff.uuid_mc);
     }
 }
 

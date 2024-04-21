@@ -52,8 +52,8 @@ function accountSelect(uuid) {
 
 async function isVIP(uuid) {
     try {
-        const { data: response } = await axios.get(`https://api.almyria.fr/minecraft/checkvip/` + uuid); 
-        return response;
+        const { data: response } = await axios.get(`https://api.almyria.fr/launcher/checkvip/` + uuid);
+        return response.vip;
     } catch (error) {
         console.log(error);
     }
@@ -65,7 +65,7 @@ async function headplayer(pseudo, uuid) {
 
     const checkVIP = await isVIP(uuid);
  
-    if (checkVIP == true) {
+    if (checkVIP) {
         document.querySelector(".player-head").style.border = "3px solid gold";
     } else {
         document.querySelector(".player-head").style.border = "2px solid #ffffff";
