@@ -80,8 +80,8 @@ async function accountSelect(data) {
 
 async function isVIP(uuid) {
     try {
-        const { data: response } = await axios.get(`https://api.almyria.fr/minecraft/checkvip/` + uuid); 
-        return response;
+        const { data: response } = await axios.get(`https://api.almyria.fr/launcher/checkvip/` + uuid);
+        return response.vip;
     } catch (error) {
         console.log(error);
     }
@@ -97,7 +97,7 @@ async function headplayer(pseudo, uuid) {
 async function VIPperks(uuid) {
     const checkVIP = await isVIP(uuid);
  
-    if (checkVIP == true) {
+    if (checkVIP) {
         var styleVIP = `
         .account-name::before, .player-username::before {
             font-weight: bold;

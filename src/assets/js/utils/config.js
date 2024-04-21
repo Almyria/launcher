@@ -14,8 +14,10 @@ let cdn = pkg.cdn_url;
 let config = `${url}/launcher/config-launcher/config.json`;
 let news = `${url}/launcher/news-launcher/news.json`;
 let launcherstatus = `${api}/launcher/status`;
-let staffmembers = `${api}/users/staffmembers`;
-let checkbughunter = `${api}/minecraft/checkbughunter`;
+
+let staffmembers = `${api}/config/staffmembers`;
+let checkbughunter = `${api}/launcher/checkbughunter`;
+
 
 class Config {
     GetConfig() {
@@ -82,18 +84,18 @@ class Config {
 
     async GetLauncherStatus() {
         let status = await axios.get(launcherstatus);
-        return status.data[0].launcher_status;
+        return status.data.status;
     }
 
     async GetStaffUsernames() {
         let staff = await axios.get(staffmembers);
         // Return only the usernames
-        return staff.data.map(staff => staff.username_mc);
+        return staff.data.staff.map(staff => staff.username_mc);
     }
 
     async IsPlayerBugHunter(uuid) {
         let bughunter = await axios.get(checkbughunter + "/" + uuid);
-        return bughunter.data;
+        return bughunter.data.bughunter;
     }
 }
 
