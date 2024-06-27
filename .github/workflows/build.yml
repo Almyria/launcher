@@ -2,7 +2,7 @@
 name: Launcher Build
 on:
   push:
-    branches: [ master ]
+    branches: [ s7 ]
 
 jobs:
   create-release:
