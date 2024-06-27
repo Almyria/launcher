@@ -1,10 +1,10 @@
 {
     "name": "launcher",
-    "preductname": "Almyria Launcher",
-    "version": "1.0.10",
+    "preductname": "AlmyriaCraft Launcher",
+    "version": "1.0.14",
     "description": "Launcher pour le serveur AlmyriaCraft",
     "main": "src/app.js",
-    "author": "Luuxis, LeWarpy <coucou@lewarpy.fr",
+    "author": "Luuxis, LeWarpy <coucou@lewarpy.fr>, LeMocha <cadet@lucie.re>",
     "url": "https://launcher.almyria.fr",
     "cdn_url": "https://cdn-launcher.almyria.fr",
     "api_url": "https://api.almyria.fr",
@@ -14,7 +14,7 @@
     "scripts": {
         "start": "cross-env-shell NODE_ENV=dev electron .",
         "build": "node build.js --build",
-        "icon": "node build.js --icon=https://raw.githubusercontent.com/luuxis/Selvania-Launcher/master/src/assets/images/icon.png",
+        "icon": "node build.js --icon=https://almyria.s3.fr-par.scw.cloud/assets/icon.png",
         "dev": "nodemon --exec npm start"
     },
     "license": "CC0",

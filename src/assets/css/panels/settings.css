@@ -141,9 +141,9 @@
 }
 
 .account:hover {
-    background: #006e47;
-    box-shadow: 0 0 5px #006e47;
-    border: 4px solid #006e47;
+    background: #b7374b;
+    box-shadow: 0 0 5px #b7374b;
+    border: 4px solid #b7374b;
 }
 
 .account-image {

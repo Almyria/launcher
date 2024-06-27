@@ -66,6 +66,19 @@ async function headplayer(pseudo, uuid) {
     const checkVIP = await isVIP(uuid);
  
     if (checkVIP) {
+        var styleVIP = `
+        .account-name::before, .player-username::before {
+            font-weight: bold;
+            color: gold;
+            content: "[VIP] ";
+        }
+        .player-head {
+            border: 3px solid gold;
+        }
+        `;
+        var sheetVIP = document.createElement('style');
+        sheetVIP.innerText = styleVIP;
+        document.head.appendChild(sheetVIP);
         document.querySelector(".player-head").style.border = "3px solid gold";
     } else {
         document.querySelector(".player-head").style.border = "2px solid #ffffff";

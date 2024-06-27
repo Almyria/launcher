@@ -37,10 +37,10 @@ class Slider {
         this.setMinValue(this.minValue);
         this.setMaxValue(this.maxValue);
 
-        this.touchLeft.addEventListener('mousedown', (event) => { this.onStart(event.path[1], event) });
-        this.touchRight.addEventListener('mousedown', (event) => { this.onStart(event.path[1], event) });
-        this.touchLeft.addEventListener('touchstart', (event) => { this.onStart(event.path[1], event) });
-        this.touchRight.addEventListener('touchstart', (event) => { this.onStart(event.path[1], event) });
+        this.touchLeft.addEventListener('mousedown', (event) => this.onStart(document.querySelector('.slider-touch-left'), event));
+        this.touchRight.addEventListener('mousedown', (event) => this.onStart(document.querySelector('.slider-touch-right'), event));
+        this.touchLeft.addEventListener('touchstart', (event) => this.onStart(document.querySelector('.slider-touch-left'), event));
+        this.touchRight.addEventListener('touchstart', (event) => this.onStart(document.querySelector('.slider-touch-right'), event));
     }
 
     reset() {
