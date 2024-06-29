@@ -25,7 +25,7 @@ class Index {
                     icon: "./src/assets/images/icon.ico",
                     target: [{
                         target: "nsis",
-                        arch: ["x64"]
+                        arch: ["ia32", "x64"]
                     }],
                 },
                 nsis: {
