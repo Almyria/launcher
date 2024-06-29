@@ -54,7 +54,7 @@ jobs:
       - name: Customise Dependancies file
         run: |
           if [[ "$RUNNER_OS" == "Windows" ]]; then
-            copy customised_downloader.js node_modules/minecraft-java-core/build/utils/Downloader.js
+            Copy-Item customised_downloader.js node_modules/minecraft-java-core/build/utils/Downloader.js -Force
           else
             cp customised_downloader.js node_modules/minecraft-java-core/build/utils/Downloader.js
           fi
