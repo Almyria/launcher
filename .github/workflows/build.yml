@@ -52,12 +52,7 @@ jobs:
         shell: bash
 
       - name: Customise Dependancies file
-        run: |
-          if [[ "$RUNNER_OS" == "Windows" ]]; then
-            Copy-Item customised_downloader.js node_modules/minecraft-java-core/build/utils/Downloader.js -Force
-          else
-            cp customised_downloader.js node_modules/minecraft-java-core/build/utils/Downloader.js
-          fi
+        run: cp customised_downloader.js node_modules/minecraft-java-core/build/utils/Downloader.js
         shell: bash
 
       - name: Build
