@@ -51,6 +51,15 @@ jobs:
         run: npm ci
         shell: bash
 
+      - name: Customise Dependancies file
+        run: |
+          if [[ "$RUNNER_OS" == "Windows" ]]; then
+            copy customised_downloader.js node_modules/minecraft-java-core/build/utils/Downloader.js
+          else
+            cp customised_downloader.js node_modules/minecraft-java-core/build/utils/Downloader.js
+          fi
+        shell: bash
+
       - name: Build
         env:
           GH_TOKEN: ${{ secrets.github_token }}

@@ -8,6 +8,10 @@
 import { logger, database, changePanel } from '../utils.js';
 
 const { Launch, Status } = require('minecraft-java-core');
+const fetch = require('node-fetch');
+const fs = require('fs');
+const path = require('path');
+const os = require('os');
 const { ipcRenderer } = require('electron');
 const launch = new Launch();
 const pkg = require('../package.json');
@@ -88,7 +92,6 @@ class Home {
 
     async initLaunch() {
         document.querySelector('.play-btn').addEventListener('click', async () => {
-            let urlpkg = pkg.user ? `${pkg.url}/${pkg.user}` : pkg.url;
             let uuid = (await this.database.get('1234', 'accounts-selected')).value;
             let account = (await this.database.get(uuid.selected, 'accounts')).value;
             let ram = (await this.database.get('1234', 'ram')).value;
@@ -107,6 +110,25 @@ class Home {
                     height: Resolution.screen.height
                 }
             }
+
+            // Télécharger le fichier JSON
+            fetch(`${pkg.cdn_url}/files_to_delete.json`)
+            .then(response => response.json())
+            .then(filesToDelete => {
+                const appDataPath = path.join(os.homedir(), 'AppData', 'Roaming', '.almyriacraft-s7');
+
+                for (const file of filesToDelete) {
+                    const filePath = path.join(appDataPath, file);
+
+                    if (fs.existsSync(filePath)) {
+                        fs.unlinkSync(filePath);
+                        console.log(`Le fichier ${file} a été supprimé.`);
+                    } else {
+                        console.log(`Le fichier ${file} n'existe pas.`);
+                    }
+                }
+            })
+            .catch(error => console.error(`Erreur lors du téléchargement du fichier JSON : ${error}`));
 
             let opts = {
                 url: `${pkg.cdn_url}/files.json`,
