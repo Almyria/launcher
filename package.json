@@ -1,7 +1,7 @@
 {
     "name": "launcher",
     "preductname": "AlmyriaCraft Launcher",
-    "version": "1.0.15",
+    "version": "1.0.16",
     "description": "Launcher pour le serveur AlmyriaCraft",
     "main": "src/app.js",
     "author": "Luuxis, LeWarpy <coucou@lewarpy.fr>, LeMocha <cadet@lucie.re>",
