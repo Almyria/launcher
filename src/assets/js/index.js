@@ -57,12 +57,12 @@ class Splash {
         if (dev) return this.startLauncher();
         this.setStatus(`Recherche de mise à jour...`);
 
-        ipcRenderer.invoke('update-app').then(err => {
-            if (err.error) {
-                let error = err.message;
-                this.shutdown(`Erreur lors de la recherche de mise à jour :<br>${error}`);
-            }
-        })
+        ipcRenderer.invoke('update-app').then(
+            console.log('Laancement de la MàJ')
+        ).catch(err => {
+            console.error(err);
+            return this.shutdown(`Erreur lors de la recherche de mise à jour :<br>${err.message}`);
+        });
 
         ipcRenderer.on('updateAvailable', () => {
             this.setStatus(`Mise à jour disponible !`);
@@ -76,6 +76,11 @@ class Splash {
 
         ipcRenderer.on('update-not-available', () => {
             this.maintenanceCheck();
+        })
+
+        ipcRenderer.on('error', (event, err) => {
+            console.error(err);
+            return this.shutdown(`Erreur lors de la mise à jour :<br>${err.message}`);
         })
     }
 

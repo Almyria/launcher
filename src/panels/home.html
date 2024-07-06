@@ -2,6 +2,16 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="assets/css/panels/home.css">
 </head>
+<div id="alert-modal" class="modal">
+    <div class="modal-content">
+      <p>Attention : la RAM du jeu a été définie à moins de 7 Go !</p>
+      <p>Il se pourrait que tu expérimentes des plantages ou instabilités</p>
+      <input type="checkbox" id="no-warning" name="no-warning">
+      <label for="no-warning">Ne plus afficher cet avertissement</label>
+      <button id="modify-game" class="tab-btn-css" style="width:30%;">Changer mes paramètres</button>
+      <button id="launch-game-anyway" class="tab-btn-css" style="width:30%;">Lancer tout de même le jeu</button>
+    </div>
+  </div>
 <div class="home-content">
     <div class="bottom-bar-home">
         <button class="player-head"></button>

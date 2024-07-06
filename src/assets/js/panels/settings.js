@@ -175,10 +175,12 @@ class Settings {
         let closeLauncher = document.getElementById("launcher-close");
         let closeAll = document.getElementById("launcher-close-all");
         let openLauncher = document.getElementById("launcher-open");
+        let resetLauncher = document.getElementById("reset-launcher");
         let resetGame = document.getElementById("reset-game");
+        let resetAll = document.getElementById("reset-all");
 
         // Delete game files
-        resetGame.addEventListener("click", () => {
+        resetLauncher.addEventListener("click", () => {
             // Confirmation dialog
             let confirmation = confirm("Êtes-vous sûr de vouloir réinitialiser le jeu ?");
             if(!confirmation) return;
@@ -199,7 +201,14 @@ class Settings {
             }
 
             // Confirmation message
-            alert("Le jeu a été réinitialisé avec succès.");
+            alert("Le jeu a été launcher avec succès.");
+        })
+
+        // Delete game files
+        resetGame.addEventListener("click", () => {
+            // Confirmation dialog
+            let confirmation = confirm("Êtes-vous sûr de vouloir réinitialiser le jeu ?");
+            if(!confirmation) return;
         })
 
         if(settingsLauncher.launcher.close === 'close-launcher') {

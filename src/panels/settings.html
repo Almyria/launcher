@@ -5,7 +5,7 @@
 <div class="settings-content">
     <div class="tabs-settings-btn">
         <button class="tab-btn-css tab-btn active-tab-btn default-tab-btn">Comptes</button>
-        <button class="tab-btn-css tab-btn">Java</button>
+        <button id="java-settings-button" class="tab-btn-css tab-btn">Java</button>
         <button class="tab-btn-css tab-btn">Launcher</button>
         <button class="tab-btn-css save-tabs-btn">Sauvegarder</button>
     </div>
@@ -18,9 +18,9 @@
     </div>
 
     <div class="tabs-settings-content">
-        <div class="settings-content-scroll">
-            <div class="title-settings">Paramètre de votre RAM.</div>
+        <div class="center-page">
             <div class="java-settings">
+                <div class="title-settings">Paramètre de votre RAM.</div>
                 <div class="information">
                     Définition de la RAM allouée à votre jeu, une quantité plus important augmentera les performances de votre jeu.<br> A noter qu'il faut éviter de mettre une trop grande quantité sinon cela peut provoquer des pertes de performances survos
                     autres applications.
@@ -53,15 +53,22 @@
 
     <div class="tabs-settings-content">
         <div class="center-page">
-            <div class="title-settings">Paramètre après le lancement du jeu.</div>
             <div class="java-settings">
+                <div class="title-settings">Paramètre après le lancement du jeu.</div>
                 <div class="information">
                     <input type="checkbox" class="checkbox-settings" id="launcher-close"><label for="launcher-close"><div class="checkround"></div></label> Fermer le launcher après le lancement du jeu.</br>
                     <input type="checkbox" class="checkbox-settings" id="launcher-close-all"><label for="launcher-close-all"><div class="checkround"></div></label> Fermer le jeu si le launcher est fermé.</br>
                     <input type="checkbox" class="checkbox-settings" id="launcher-open"><label for="launcher-open"><div class="checkround"></div></label> Garder le launcher ouvert après le lancement du jeu.
-                    <hr>
-                    ⚠️ À utiliser en cas de problème de lancement du jeu ! Cette action supprimera l'intégralité des fichiers Minecraft.<br><br>
-                    <button id="reset-game" class="tab-btn-css" style="width:100%;text-transform: uppercase;">Réinitialiser</button>
+                </div>
+            </div>
+            <div class="java-settings">
+                <div class="title-settings">Remise à zéro.</div>
+                <div class="information">
+                    Bah alors ! On a cliqué trop vite ? Ton jeu est cassé ? On a jamais dit que c'était de ta faute !<br>
+                    Pas de soucis ! Tu es au bon endroit ! Remettons tout ça bien au propre !<br><br>
+                    <button id="reset-launcher" class="tab-btn-css" style="width:30%;">Réinitialiser le launcher</button>
+                    <button id="reset-game" class="tab-btn-css" style="width:30%;">Réinitialiser le jeu</button>
+                    <button id="reset-all" class="tab-btn-css" style="width:30%; text-transform: uppercase;">Effacez moi tout !</button>
                 </div>
             </div>
         </div>
