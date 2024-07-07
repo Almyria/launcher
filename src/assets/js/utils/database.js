@@ -42,6 +42,10 @@ class database {
                 if (!db.objectStoreNames.contains('screen')) {
                     db.createObjectStore('screen', { keyPath: "key" });
                 }
+
+                if (!db.objectStoreNames.contains('no-warning')) {
+                    db.createObjectStore('no-warning', { keyPath: "key" });
+                }
             }
 
             request.onsuccess = (event) => {
@@ -103,6 +107,15 @@ class database {
         var key = 0;
         for (let c of int.split("")) key = (((key << 5) - key) + c.charCodeAt()) & 0xFFFFFFFF;
         return key;
+    }
+
+    resetAllDb() {
+        return new Promise((resolve) => {
+            let request = indexedDB.deleteDatabase('database');
+            request.onsuccess = () => {
+                resolve(true);
+            }
+        });
     }
 }
 

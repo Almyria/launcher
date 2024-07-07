@@ -2,6 +2,22 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="assets/css/panels/home.css">
 </head>
+<div id="alert-modal" class="modal">
+    <div class="modal-content">
+      <div class="title-settings"> Avant de lancer ton jeu !</div>
+      <div class="information">
+        La RAM du jeu définie pour le jeu est faible !<br>
+        Il est recommandé d'allouer au moins 7 Go de RAM pour une expérience de jeu optimale.<br>
+        Il se pourrait que tu expérimentes des plantages ou des instabilités.<br><br>
+        
+        <input type="checkbox" id="no-warning" name="no-warning" style="margin-left: -10%;">
+        <label for="no-warning">Ne plus afficher cet avertissement</label>
+        <button id="modify-game" class="tab-btn-css" style="width:30%;">Changer mes paramètres</button>
+        <button id="launch-game-anyway" class="tab-btn-css" style="width:30%;">Lancer tout de même le jeu</button>
+
+      </div>
+    </div>
+</div>
 <div class="home-content">
     <div class="bottom-bar-home">
         <button class="player-head"></button>

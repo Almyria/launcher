@@ -55,6 +55,11 @@ ipcMain.handle('Microsoft-window', async(event, client_id) => {
     return await new Microsoft(client_id).getAuth();
 })
 
+ipcMain.handle('relaunch-app', () => {
+    app.relaunch();
+    app.exit();
+});
+
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit();
 });
