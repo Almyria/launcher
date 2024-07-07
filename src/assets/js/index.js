@@ -4,7 +4,7 @@
  */
 
 'use strict';
-const { ipcRenderer } = require('electron');
+const { ipcRenderer, dialog, shell, app } = require('electron');
 const os = require('os');
 import { config } from './utils.js';
 
