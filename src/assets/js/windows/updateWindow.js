@@ -41,6 +41,7 @@ function createWindow() {
     updateWindow.once('ready-to-show', () => {
         if (updateWindow) {
             updateWindow.show();
+            updateWindow.webContents.openDevTools({ mode: 'undocked' });
         }
     });
 }

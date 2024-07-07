@@ -46,7 +46,7 @@ function createWindow() {
             mainWindow.show();
         }
     });
-    //mainWindow.webContents.openDevTools({ mode: 'undocked' });
+    mainWindow.webContents.openDevTools({ mode: 'undocked' });
 }
 
 module.exports = {

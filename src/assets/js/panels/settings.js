@@ -9,6 +9,10 @@ import { database, changePanel, accountSelect, Slider } from '../utils.js';
 const dataDirectory = process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Application Support' : process.env.HOME)
 
 const os = require('os');
+const fs = require('fs');
+const path = require('path');
+
+const { ipcRenderer } = require('electron');
 
 class Settings {
     static id = "settings";
@@ -164,6 +168,7 @@ class Settings {
     }
 
     async initLauncherSettings() {
+
         let launcherDatabase = (await this.database.get('1234', 'launcher'))?.value;
         let settingsLauncher = {
             uuid: "1234",
@@ -175,32 +180,61 @@ class Settings {
         let closeLauncher = document.getElementById("launcher-close");
         let closeAll = document.getElementById("launcher-close-all");
         let openLauncher = document.getElementById("launcher-open");
+        let resetLauncher = document.getElementById("reset-launcher");
         let resetGame = document.getElementById("reset-game");
+        let resetAll = document.getElementById("reset-all");
 
-        // Delete game files
-        resetGame.addEventListener("click", () => {
-            // Confirmation dialog
-            let confirmation = confirm("Êtes-vous sûr de vouloir réinitialiser le jeu ?");
+        resetLauncher.addEventListener("click", async () => {
+            let confirmation = confirm("Êtes-vous sûr de vouloir réinitialiser le launcher ?");
             if(!confirmation) return;
 
-            // Delete game files
-            let gamePath = `${dataDirectory}/${process.platform == 'darwin' ? this.config.dataDirectory : `.${this.config.dataDirectory}`}`;
+            this.database.resetAllDb();
 
-            if(process.platform == 'win32') {
-                let cmd = require('node-cmd');
-                // Delete files from gamePath
-                cmd.run(`rmdir /s /q "${gamePath}"`);
-                console.log('Files win32 deleted')
-            } else {
-                const { exec } = require('child_process');
-                // Delete files from gamePath
-                exec(`rm -rf "${gamePath}"`);
-                console.log('Files unix deleted')
-            }
-
-            // Confirmation message
-            alert("Le jeu a été réinitialisé avec succès.");
+            ipcRenderer.invoke('relaunch-app');
         })
+
+        resetGame.addEventListener("click", () => {
+            let confirmation = confirm("Êtes-vous sûr de vouloir réinitialiser le dossier du jeu ?");
+            if(!confirmation) return;
+        
+            const directoryPath = path.join(dataDirectory, '.almyriacraft-s7');
+        
+            // Sélectionner la classe modal et l'afficher
+            let modal = document.getElementById('alert-modal-deletion');
+            modal.style.display = 'block';
+
+            setTimeout(() => {
+                if (fs.existsSync(directoryPath)) {
+                    fs.rmdirSync(directoryPath, { recursive: true });
+                    console.log(`Le dossier ${directoryPath} a été supprimé.`);
+                } else {
+                    console.log(`Le dossier ${directoryPath} n'existe pas.`);
+                }
+        
+                ipcRenderer.invoke('relaunch-app');
+            }, 1000); // Delay of 1 second
+        });
+
+        resetAll.addEventListener("click", () => {
+            let confirmation = confirm("Êtes-vous sûr de vouloir réinitialiser le launcher et le dossier du jeu ?");
+            if(!confirmation) return;
+
+            let modal = document.getElementById('alert-modal-deletion');
+            modal.style.display = 'block';
+
+            setTimeout(() => {
+                const directoryPath = path.join(dataDirectory, '.almyriacraft-s7');
+
+                if (fs.existsSync(directoryPath)) {
+                    fs.rmdirSync(directoryPath, { recursive: true });
+                    console.log(`Le dossier ${directoryPath} a été supprimé.`);
+                } else {
+                    console.log(`Le dossier ${directoryPath} n'existe pas.`);
+                }
+                this.database.resetAllDb();
+                ipcRenderer.invoke('relaunch-app');
+            }, 1000);
+        });
 
         if(settingsLauncher.launcher.close === 'close-launcher') {
             closeLauncher.checked = true;
@@ -286,11 +320,16 @@ class Settings {
         }
 
         if (!(await this.database.getAll('ram')).length) {
-            this.database.add({ uuid: "1234", ramMin: "1", ramMax: "2" }, 'ram')
+            let defaultMaxRam = Math.floor((Math.trunc(os.totalmem() / 1073741824 * 10) / 10)/2);
+            this.database.add({ uuid: "1234", ramMin: "1", ramMax: `${defaultMaxRam}` }, 'ram')
         }
 
         if (!(await this.database.getAll('screen')).length) {
             this.database.add({ uuid: "1234", screen: { width: "1280", height: "720" } }, 'screen')
+        }
+
+        if (!(await this.database.getAll('no-warning')).length) {
+            this.database.add({ uuid: "1234", value: 'false'}, 'no-warning')
         }
     }
 }
