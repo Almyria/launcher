@@ -3,7 +3,7 @@
  * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0/
  */
 
-const { app, ipcMain } = require('electron');
+const { app, ipcMain, shell, dialog } = require('electron');
 const { Microsoft } = require('minecraft-java-core');
 const { autoUpdater } = require('electron-updater')
 
@@ -58,6 +58,22 @@ ipcMain.handle('Microsoft-window', async(event, client_id) => {
 ipcMain.handle('relaunch-app', () => {
     app.relaunch();
     app.exit();
+});
+
+ipcMain.handle('show-mac-update-dialog', async (event) => {
+    const options = {
+        type: 'info',
+        buttons: ['Télécharger la mise à jour', 'Fermer'],
+        message: 'Une nouvelle mise à jour est disponible. Veuillez télécharger la dernière mise à jour.'
+    };
+
+    const response = await dialog.showMessageBox(options);
+    if (response.response === 0) {
+        shell.openExternal('https://github.com/Almyria/launcher/releases');
+        app.quit();
+    } else {
+        app.quit();
+    }
 });
 
 app.on('window-all-closed', () => {
