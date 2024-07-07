@@ -183,7 +183,7 @@ class Settings {
         let resetLauncher = document.getElementById("reset-launcher");
         let resetGame = document.getElementById("reset-game");
         let resetAll = document.getElementById("reset-all");
-      
+
         resetLauncher.addEventListener("click", async () => {
             let confirmation = confirm("Êtes-vous sûr de vouloir réinitialiser le launcher ?");
             if(!confirmation) return;
