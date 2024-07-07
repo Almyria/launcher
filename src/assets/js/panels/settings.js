@@ -197,7 +197,7 @@ class Settings {
             let confirmation = confirm("Êtes-vous sûr de vouloir réinitialiser le dossier du jeu ?");
             if(!confirmation) return;
         
-            const directoryPath = path.join(dataDirectory, '.almyriacraft-s7');
+            const directoryPath = `${dataDirectory}/${process.platform == 'darwin' ? this.config.dataDirectory : `.${this.config.dataDirectory}`}`;
         
             // Sélectionner la classe modal et l'afficher
             let modal = document.getElementById('alert-modal-deletion');
@@ -223,7 +223,7 @@ class Settings {
             modal.style.display = 'block';
 
             setTimeout(() => {
-                const directoryPath = path.join(dataDirectory, '.almyriacraft-s7');
+                const directoryPath = `${dataDirectory}/${process.platform == 'darwin' ? this.config.dataDirectory : `.${this.config.dataDirectory}`}`;;
 
                 if (fs.existsSync(directoryPath)) {
                     fs.rmdirSync(directoryPath, { recursive: true });

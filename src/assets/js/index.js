@@ -5,6 +5,7 @@
 
 'use strict';
 const { ipcRenderer } = require('electron');
+const os = require('os');
 import { config } from './utils.js';
 
 let dev = process.env.NODE_ENV === 'dev';
@@ -53,6 +54,22 @@ class Splash {
         this.checkUpdate();
     }
 
+    showMacOSUpdateDialog() {
+        const options = {
+            type: 'info',
+            buttons: ['Télécharger la mise à jour', 'Fermer'],
+            message: 'Une nouvelle mise à jour est disponible. Veuillez télécharger la dernière mise à jour.'
+        };
+    
+        dialog.showMessageBox(options).then(response => {
+            if (response.response === 0) {
+                shell.openExternal('https://github.com/Almyria/launcher/releases');
+            } else {
+                app.quit();
+            }
+        });
+    }
+
     async checkUpdate() {
         if (dev) return this.startLauncher();
         this.setStatus(`Recherche de mise à jour...`);
@@ -65,9 +82,14 @@ class Splash {
         });
 
         ipcRenderer.on('updateAvailable', () => {
-            this.setStatus(`Mise à jour disponible !`);
-            this.toggleProgress();
-            ipcRenderer.send('start-update');
+            if (os.platform() === 'darwin') { // if the OS is MacOS
+                this.setStatus(`Mise à jour disponible !`);
+                this.showMacOSUpdateDialog();
+            } else {
+                this.setStatus(`Mise à jour disponible !`);
+                this.toggleProgress();
+                ipcRenderer.send('start-update');
+            }
         })
 
         ipcRenderer.on('download-progress', (event, progress) => {

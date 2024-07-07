@@ -119,7 +119,7 @@ class Home {
         fetch(`${pkg.cdn_url}/files_to_delete.json`)
         .then(response => response.json())
         .then(filesToDelete => {
-            const appDataPath = path.join(dataDirectory, '.almyriacraft-s7');
+            const appDataPath = `${dataDirectory}/${process.platform == 'darwin' ? self.config.dataDirectory : `.${self.config.dataDirectory}`}`;;
     
             for (const file of filesToDelete) {
                 const filePath = path.join(appDataPath, file);
