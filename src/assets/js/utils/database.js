@@ -6,7 +6,7 @@
 class database {
     async init() {
         this.db = await new Promise((resolve) => {
-            let request = indexedDB.open('database', 1);
+            let request = indexedDB.open('database', 2);
 
             request.onupgradeneeded = (event) => {
                 let db = event.target.result;
