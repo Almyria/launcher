@@ -55,7 +55,9 @@
         </div>
         <button class="cancel cancel-login" style="display:none">Annuler</button>
         <hr>
-        <div class="no-acc"><h5>Politique de confidentialté disponible sur www.almyria.fr/legal</h5></div>
+        <div id="privacy-infos" class="no-acc">
+            <h5 onclick="require('electron').shell.openExternal('https://www.almyria.fr/reglement/legal')">Politique de confidentialité</h5>
+        </div>
     </div>
 
     <div class="login-card-mojang">

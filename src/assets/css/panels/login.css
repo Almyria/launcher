@@ -126,3 +126,8 @@
 .no-acc {
     margin-top: 5%;
 }
+
+#privacy-infos h5:hover {
+    color: #eb4760;
+    cursor: pointer;
+}
