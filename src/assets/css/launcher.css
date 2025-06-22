@@ -5,14 +5,14 @@
 
 * {
     outline: none;
-    font-family: 'Roboto';
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
     margin: 0;
     padding: 0;
     user-select: none;
-    background: linear-gradient(#eb476061 0%, #ffffff00 20%, #ffffff00 80%, #f9bf7d45 100%), url(../images/background/s6.webp) black no-repeat center center scroll;
+    background: linear-gradient(#eb476061 0%, #ffffff00 20%, #ffffff00 80%, #f9bf7d45 100%), url(../images/background/acs8.webp) black no-repeat center center scroll;
 }
 
 img {
@@ -104,6 +104,7 @@ img {
     border-radius: 50%;
     transform: translateX(0);
     animation: dot 2.8s infinite;
+    box-shadow: 0 0 10px #000000;
 }
 
 .dots {
@@ -121,6 +122,7 @@ img {
     margin-left: 16px;
     background: #ffffff;
     border-radius: 50%;
+    box-shadow: 0 0 10px #000000;
 }
 
 @keyframes dot {
@@ -138,6 +140,7 @@ img {
 .preload-title {
     font: normal normal bold 30px/40px Roboto;
     color: #E1E1E1;
+    text-shadow: 0 0 10px #000000;
     text-align: center;
     margin: 2em 0;
 }

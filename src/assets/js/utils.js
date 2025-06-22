@@ -53,7 +53,7 @@ function accountSelect(uuid) {
 async function isVIP(uuid) {
     try {
         const { data: response } = await axios.get(`https://api.almyria.fr/launcher/checkvip/` + uuid);
-        return response.vip;
+        return response;
     } catch (error) {
         console.log(error);
     }
@@ -65,7 +65,22 @@ async function headplayer(pseudo, uuid) {
 
     const checkVIP = await isVIP(uuid);
  
-    if (checkVIP) {
+    if (checkVIP && checkVIP.vipPlus) {
+        var styleVIPPlus = `
+        .account-name::before, .player-username::before {
+            font-weight: bold;
+            color: #eb4760;
+            content: "[VIP+] ";
+        }
+        .player-head {
+            border: 3px solid #eb4760;
+        }
+        `;
+        var sheetVIPPlus = document.createElement('style');
+        sheetVIPPlus.innerText = styleVIPPlus;
+        document.head.appendChild(sheetVIPPlus);
+        document.querySelector(".player-head").style.border = "3px solid #eb4760";
+    } else if (checkVIP && checkVIP.vip) {
         var styleVIP = `
         .account-name::before, .player-username::before {
             font-weight: bold;
